@@ -5,12 +5,19 @@
     $produce_code = filter_input(INPUT_POST, 'produce_code', FILTER_VALIDATE_INT);
 
     $queryProduce = '
-        SELECT produceCode, itemName, variety, origin, quantity, measure, price FROM produce WHERE produceCode = :produce_code';
+        SELECT produceCode, itemName, variety, origin, quantity, measure, price, typeID, imageName FROM produce WHERE produceCode = :produce_code';
 
     $statement = $db->prepare($queryProduce);
     $statement->bindValue(':produce_code', $produce_code);
     $statement->execute();
     $product = $statement->fetch();
+    $statement->closeCursor();
+
+    // Get produce types
+    $query = 'SELECT typeID, produceType from types';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $types = $statement->fetchAll();
     $statement->closeCursor();
 
 ?>
@@ -27,29 +34,46 @@
         <?php include("header.php"); ?>
 
         <main>
-            <h2>Update Produce</h2>
+        <h2>Update Produce</h2>
 
-            <form action="update_produce.php" method="post" id="update_produce_form" enctype="multipart/form-data">
-                <input type="hidden" name="produce_code" value="<?php echo $product['produceCode']; ?>" />
-                <div id="data">
+        <form action="update_produce.php" method="post" id="update_produce_form" enctype="multipart/form-data">
+            <input type="hidden" name="produce_code" value="<?php echo $product['produceCode']; ?>" />
+            <div id="data">
 
-                    <label>First Name:</label>
-                    <input type="text" name="item_name" value="<?php echo $product['itemName']; ?>" /><br />
+                <label>Item Name:</label>
+                <input type="text" name="item_name" value="<?php echo $product['itemName']; ?>" /><br />
 
-                    <label>Variety:</label>
-                    <input type="text" name="variety" value="<?php echo $product['variety']; ?>" /><br />
+                <label>Variety:</label>
+                <input type="text" name="variety" value="<?php echo $product['variety']; ?>" /><br />
 
-                    <label>Origin:</label>
-                    <input type="text" name="origin" value="<?php echo $product['origin']; ?>" /><br />
+                <label>Origin:</label>
+                <input type="text" name="origin" value="<?php echo $product['origin']; ?>" /><br />
 
-                    <label>Quantity:</label>
-                    <input type="text" name="quantity" value="<?php echo $product['quantity']; ?>" /><br />
+                <label>Quantity:</label>
+                <input type="text" name="quantity" value="<?php echo $product['quantity']; ?>" /><br />
 
-                    <label>Measure:</label>
-                    <input type="text" name="measure" value="<?php echo $product['measure']; ?>" /><br />
+                <label>Measure:</label>
+                <input type="text" name="measure" value="<?php echo $product['measure']; ?>" /><br />
 
-                    <label>Price:</label>
-                    <input type="text" name="price" value="<?php echo $product['price']; ?>" /><br />
+                <label>Price:</label>
+                <input type="text" name="price" value="<?php echo $product['price']; ?>" /><br />
+
+                <label>Produce Type:</label>
+                    <select name="type_id">
+                        <?php foreach ($types as $type): ?>
+                            <option value="<?php echo $type['typeID']; ?>" <?php if ($type['typeID'] == $product['typeID']) echo 'selected'; ?>>
+                                <?php echo $type['produceType']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select><br />
+
+                    <?php if (!empty($product['imageName'])): ?>
+                        <label>Current Image:</label>
+                        <img src="images/<?php echo htmlspecialchars($product['imageName']); ?>" height="100"><br />                        
+                    <?php endif; ?>
+
+                    <label>Update Image:</label>
+                    <input type="file" name="file1" /><br />
 
                 </div>
 

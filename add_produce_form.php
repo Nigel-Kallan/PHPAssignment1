@@ -1,14 +1,20 @@
 <?php
     session_start();
 
-    require("database.php");    
+    require_once("database.php");
+    
+    $query = 'SELECT typeID, produceType from types';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $types = $statement->fetchAll();
+    $statement->closeCursor();    
 
 ?>
 
 <!DOCTYPE html>
 <html>
 
-    <head>
+<head>
         <title>Produce Manager - Add Produce</title>
         <link rel="stylesheet" type="text/css" href="css/produce.css" />
     </head>
@@ -41,7 +47,18 @@
                     <label>Price:</label>
                     <input type="text" name="price" /><br />
 
-                    
+                    <label>Produce Type:</label>
+                    <select name="type_id">
+                        <?php foreach ($types as $type): ?>
+                            <option value="<?php echo $type['typeID']; ?>">
+                                <?php echo $type['produceType']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select><br />
+
+                    <label>Upload Image:</label>
+                    <input type="file" name="file1" /><br />
+
                 </div>
 
                 <div id="buttons">
