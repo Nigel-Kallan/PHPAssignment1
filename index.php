@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    if (!isset($_SESSION['isLoggedIn'])) {
+        header("Location: login_form.php");
+        die();
+    }
 
     require("database.php");
 
@@ -26,7 +32,7 @@
         <?php include("header.php"); ?>
 
         <main>
-            <h2>Produce List</h2>
+            <h2>Produce List (<?php echo "Logged In User: " . $_SESSION['userName']; ?>)</h2>
             <table>
                 <tr>
                     <th>Item Name</th>
@@ -79,6 +85,8 @@
             </table>
 
             <p><a href="add_produce_form.php">Add Produce</a></p>
+
+            <p><a href="logout.php">Logout</a></p
 
         </main>
 
