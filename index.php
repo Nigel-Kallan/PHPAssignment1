@@ -32,7 +32,7 @@
         <?php include("header.php"); ?>
 
         <main>
-            <h2>Produce List (<?php echo "Logged In User: " . $_SESSION['userName']; ?>)</h2>
+            <h2>Produce List (<?php echo "User: " . $_SESSION['userName']; ?>)</h2>
             <table>
                 <tr>
                     <th>Item Name</th>

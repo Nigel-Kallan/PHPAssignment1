@@ -1,3 +1,3 @@
 <footer>
-    <h2>Copyright &copy; 2026 - All rights reserved</h2>
+    <h2><a class="back-link" href="index.php">Copyright &copy; 2026 - All rights reserved</a></h2>
 </footer>
