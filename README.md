@@ -1,15 +1,15 @@
 
-##Web Capstone Project – Nigel Kallan
+## Web Capstone Project – Nigel Kallan
 App Name: FreshLink Global - “Linking GLOBAL farms to LOCAL shelves.”
 
  
-Introduction
+## Introduction
 FreshLink Global is a digital supply-chain management and logistics application designed for a produce distribution company that imports, warehouses, and distributes high-quality fruits and vegetables from around the world to supermarkets and retailers. 
 The app aims to streamline the full produce lifecycle—from international sourcing and import tracking to warehouse inventory management and final distribution—ensuring product quality, freshness, traceability, and operational efficiency. 
 As global food supply chains become more complex, FreshLink Global provides a centralized platform that improves visibility, reduces waste, enhances food safety compliance, and strengthens communication between importers, warehouse staff, distributors, and retail partners. 
 The app supports the company’s mission of delivering premium produce while maintaining high standards of quality control and logistics coordination.
  
-General Functionality
+## General Functionality
 Key App Features:
 •	Global produce import tracking (origin country, supplier, shipment status, ETA)
 •	Warehouse inventory management system
