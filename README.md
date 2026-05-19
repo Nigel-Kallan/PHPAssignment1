@@ -12,6 +12,7 @@ The app supports the company’s mission of delivering premium produce while mai
 ## General Functionality 
 
 ### Key App Features:
+
 •	Global produce import tracking (origin country, supplier, shipment status, ETA)
 •	Warehouse inventory management system
 •	Real-time stock levels and freshness monitoring
