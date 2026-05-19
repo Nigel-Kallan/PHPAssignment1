@@ -10,6 +10,7 @@ As global food supply chains become more complex, FreshLink Global provides a ce
 The app supports the company’s mission of delivering premium produce while maintaining high standards of quality control and logistics coordination.
  
 ## General Functionality
+
 Key App Features:
 •	Global produce import tracking (origin country, supplier, shipment status, ETA)
 •	Warehouse inventory management system
